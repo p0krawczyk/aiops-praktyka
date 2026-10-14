@@ -125,10 +125,10 @@ Nowa sesja `claude`, potem:
 
 ## SUKCES
 
-- [ ] `dobry.yaml` przechodzi `kubectl apply --dry-run=server`, a Ty wiesz, czego walidator nie sprawdził
-- [ ] do modelu nie trafił żaden sekret z `awaria.txt`
-- [ ] każdy dowód w tabeli diagnozy znalazłeś w danych albo oznaczyłeś jako halucynację
-- [ ] `/diagnoza` działa w nowej sesji
+- [+] `dobry.yaml` przechodzi `kubectl apply --dry-run=server`, a Ty wiesz, czego walidator nie sprawdził
+- [+] do modelu nie trafił żaden sekret z `awaria.txt`
+- [+] każdy dowód w tabeli diagnozy znalazłeś w danych albo oznaczyłeś jako halucynację
+- [+] `/diagnoza` działa w nowej sesji
 
 ## Dla chętnych
 
