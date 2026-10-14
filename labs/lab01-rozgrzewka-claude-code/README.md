@@ -96,10 +96,10 @@ shellcheck app/scripts/backup-db.sh   # jeśli masz shellcheck
 
 ## SUKCES
 
-- [ ] `/status` pokazuje konto szkoleniowe
-- [ ] `CLAUDE.md` ma co najmniej jedną Twoją ręczną poprawkę
-- [ ] reguła `deny` blokuje odczyt `.env`
-- [ ] umiesz wskazać jedno twierdzenie agenta, które sprawdziłeś sam
+- [+] `/status` pokazuje konto szkoleniowe
+- [+] `CLAUDE.md` ma co najmniej jedną Twoją ręczną poprawkę
+- [+] reguła `deny` blokuje odczyt `.env`
+- [+] umiesz wskazać jedno twierdzenie agenta, które sprawdziłeś sam
 
 ## Dla chętnych
 
