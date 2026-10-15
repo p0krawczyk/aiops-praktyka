@@ -8,6 +8,8 @@ Repo szkolenia Sages „AIOps w praktyce” (treści po polsku). `app/` — apli
 - Zainstalowany AWS CLI to wersja: v2.38.0.
 - Zainstalowany git to wersja: v2.56.0.
 - Zainstalowany python to wersja: v3.13.5.
+- Zainstalowany trivy to wersja: 0.76.0.
+- Zainstalowany terraform to wersja: v1.16.5.
 
 ## Komendy (w `app/`)
 - Lokalnie: `docker compose up -d --build` (UI :8088, orders-api :8000/docs); ruch: `docker compose --profile loadgen up -d loadgen`; stop: `docker compose down -v`

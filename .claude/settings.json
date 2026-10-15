@@ -1,8 +1,13 @@
 {
   "permissions": {
     "allow": ["Bash(kubectl get:*)", "Bash(kubectl describe:*)",
-              "Bash(kubectl logs:*)", "Bash(kubectl top:*)", "Bash(k8sgpt analyze:*)"],
-    "ask":   ["Bash(kubectl set:*)", "Bash(kubectl patch:*)", "Bash(kubectl edit:*)",
+              "Bash(kubectl logs:*)", "Bash(kubectl top:*)", "Bash(k8sgpt analyze:*)",
+              "Bash(kubectl diff:*)", "Bash(kubectl version:*)",
+              "Bash(trivy config:*)", "Bash(trivy fs:*)", "Bash(trivy image:*)", "Bash(trivy --version:*)",
+              "Bash(terraform version:*)", "Bash(terraform fmt:*)", "Bash(terraform init:*)",
+              "Bash(terraform validate:*)", "Bash(terraform plan:*)"],
+    "ask":   ["Bash(terraform apply:*)", "Bash(terraform destroy:*)",
+              "Bash(kubectl set:*)", "Bash(kubectl patch:*)", "Bash(kubectl edit:*)",
               "Bash(kubectl rollout:*)", "Bash(kubectl apply:*)"],
     "deny":  ["Bash(kubectl get secret:*)", "Bash(kubectl get secrets:*)", "Bash(*secret*)",
               "Bash(kubectl delete:*)", "Bash(kubectl exec:*)", "Read(./**/.env)", "Read(./**/*.tfstate)"]

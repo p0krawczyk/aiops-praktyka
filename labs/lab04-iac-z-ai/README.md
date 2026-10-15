@@ -100,9 +100,9 @@ Skopiuj tabelę do pliku `lab04/dziennik.md` w swoim forku.
 
 ## SUKCES
 
-- [ ] `setup/check.sh` → `SUKCES: 11/11`
-- [ ] w klastrze są PDB i NetworkPolicy z plików w Twoim repo (`kubectl get pdb,networkpolicy`)
-- [ ] w dzienniku jest co najmniej jedna rzecz, którą złapała bramka albo którą poprawiłeś sam
+- [+] `setup/check.sh` → `SUKCES: 11/11`
+- [+] w klastrze są PDB i NetworkPolicy z plików w Twoim repo (`kubectl get pdb,networkpolicy`)
+- [+] w dzienniku jest co najmniej jedna rzecz, którą złapała bramka albo którą poprawiłeś sam
 
 ## Dla chętnych
 
