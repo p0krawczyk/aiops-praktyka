@@ -125,11 +125,11 @@ Skopiuj tabelę do pliku `lab03/dziennik.md` w swoim forku.
 
 ## SUKCES
 
-- [ ] ostatni przebieg workflow w Twoim forku jest zielony, a `actionlint` i `zizmor` nie zgłaszają błędów
-- [ ] checklista spełniona w całości
-- [ ] 4 deploymenty Kantyny działają na obrazach z Twojego commita
-- [ ] `setup/check.sh` → `SUKCES: 11/11`
-- [ ] w dzienniku jest co najmniej jedna sugestia AI, której nie wdrożyłeś, z uzasadnieniem
+- [+] ostatni przebieg workflow w Twoim forku jest zielony, a `actionlint` i `zizmor` nie zgłaszają błędów
+- [+] checklista spełniona w całości
+- [+] 4 deploymenty Kantyny działają na obrazach z Twojego commita
+- [+] `setup/check.sh` → `SUKCES: 11/11`
+- [+] w dzienniku jest co najmniej jedna sugestia AI, której nie wdrożyłeś, z uzasadnieniem
 
 ## Dla chętnych
 
