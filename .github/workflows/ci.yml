@@ -134,13 +134,16 @@ jobs:
             kubectl rollout status "deployment/kantyna-$svc" \
               --namespace "$K8S_NAMESPACE" --timeout=180s
           done
+      # NetworkPolicy wpuszcza do orders-api tylko pody web, więc test idzie z poda web
       - name: smoke test /healthz
-        env:
-          RUN_ID: ${{ github.run_id }}
+        timeout-minutes: 3
         run: |
-          kubectl run "smoke-$RUN_ID" \
-            --namespace "$K8S_NAMESPACE" \
-            --image=curlimages/curl:8.11.1 \
-            --restart=Never --rm -i --quiet \
-            --command -- curl -fsS --retry 5 --retry-connrefused \
-              http://kantyna-orders-api:8000/healthz
+          for attempt in 1 2 3 4 5; do
+            if kubectl exec --namespace "$K8S_NAMESPACE" deploy/kantyna-web -- \
+                wget -q -T 10 -O - http://kantyna-orders-api:8000/healthz; then
+              exit 0
+            fi
+            echo "próba $attempt nieudana"
+            sleep 5
+          done
+          exit 1
