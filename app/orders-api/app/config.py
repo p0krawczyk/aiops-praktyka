@@ -16,6 +16,9 @@ class Settings:
         )
         self.db_pool_min: int = int(os.getenv("DB_POOL_MIN", "1"))
         self.db_pool_max: int = int(os.getenv("DB_POOL_MAX", "10"))
+        # Max wait for a pooled connection. Kept below the readiness probe timeout (3 s),
+        # so an exhausted pool answers 503 quickly instead of hanging for psycopg's 30 s default.
+        self.db_pool_timeout_s: float = float(os.getenv("DB_POOL_TIMEOUT_S", "2.0"))
 
         self.payments_url: str = os.getenv("PAYMENTS_URL", "http://payments:8080")
         self.payments_timeout_s: float = float(os.getenv("PAYMENTS_TIMEOUT_S", "3.0"))

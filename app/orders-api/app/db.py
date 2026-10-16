@@ -53,6 +53,7 @@ async def open_pool() -> None:
         conninfo=settings.database_url,
         min_size=settings.db_pool_min,
         max_size=settings.db_pool_max,
+        timeout=settings.db_pool_timeout_s,
         open=False,
         kwargs={"row_factory": dict_row},
     )

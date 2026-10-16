@@ -162,3 +162,21 @@ def test_error_rate_flag_injects_500(client, monkeypatch):
     monkeypatch.setattr(db, "fetch_menu", fake_fetch_menu)
     resp = client.get("/api/menu")
     assert resp.status_code == 500
+
+
+def test_menu_returns_503_when_db_pool_exhausted(client, monkeypatch):
+    from psycopg_pool import PoolTimeout
+
+    async def exhausted(slow=False):
+        raise PoolTimeout("couldn't get a connection after 2.00 sec")
+
+    monkeypatch.setattr(db, "fetch_menu", exhausted)
+    resp = client.get("/api/menu")
+    assert resp.status_code == 503
+    assert resp.json() == {"detail": "database busy, retry later"}
+
+
+def test_db_pool_timeout_default_is_below_readiness_probe():
+    from app.config import settings
+
+    assert 0 < settings.db_pool_timeout_s < 3

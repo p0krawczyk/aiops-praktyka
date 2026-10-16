@@ -9,6 +9,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import JSONResponse
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+from psycopg_pool import PoolTimeout
 
 from . import db, metrics, runtime
 from .config import settings
@@ -63,6 +64,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Kantyna orders-api", version=settings.version, lifespan=lifespan)
 setup_tracing(app)
+
+
+@app.exception_handler(PoolTimeout)
+async def pool_timeout_handler(request: Request, exc: PoolTimeout):
+    log.warning("DB pool exhausted", extra={"route": request.url.path})
+    return JSONResponse(status_code=503, content={"detail": "database busy, retry later"})
 
 
 @app.middleware("http")
