@@ -1,0 +1,7 @@
+# Dziwne momenty w namespace demo (ostatnie 4 dni, czas polski)
+
+13.10 10:32–11:04 | odsetek 5xx do 7,2% (norma 0); w logach ERROR „Unhandled error while processing request” (`UpstreamUnavailableError`, np. `/api/menu/search`), ok. 423 błędów w 40 min do 11:10 | `(sum(rate(http_requests_total{namespace="demo",job="kantyna-orders-api",status=~"5.."}[5m])) or vector(0)) / sum(rate(http_requests_total{namespace="demo",job="kantyna-orders-api"}[5m]))`; `{namespace="demo", app="orders-api"} \| json \| level="ERROR"`
+13.10 11:32–12:14 | p95 orders-api do 2,2 s (norma ok. 0,02 s), w tym oknie brak logów ERROR | `histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{namespace="demo",job="kantyna-orders-api"}[5m])))`
+13.10 13:05–14:35 | kolejka workera do 10 783 wiadomości (norma 0); w logach workera o 13:46 `flags updated` (`processing_delay_ms: 0`) | `max(worker_queue_visible_messages{namespace="demo"})`
+14.10 14:00–14:36 | pamięć dwóch podów orders-api (`fb96d`, `vxtcm`) do ok. 368 MiB (norma ok. 135 MiB), o 14:25 restart z powodem OOMKilled (9 restartów w 4 dni na tych podach) | `sum by (pod) (container_memory_working_set_bytes{namespace="demo",container="orders-api"})/1024/1024`; `max by (pod,reason) (kube_pod_container_status_last_terminated_reason{namespace="demo"} == 1)`
+14.10 06:32–07:02 | p95 orders-api do 0,22 s (norma ok. 0,02 s), mniejszy skok, bez błędów 5xx i bez logów ERROR | `histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{namespace="demo",job="kantyna-orders-api"}[5m])))`

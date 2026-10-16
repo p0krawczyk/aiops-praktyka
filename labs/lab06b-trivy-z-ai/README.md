@@ -109,10 +109,10 @@ Na koniec odpowiedz w `lab06b/notatki.md`:
 
 ## SUKCES
 
-- [ ] `lab06b/notatki.md`: liczby z kroku 1, plik ze znaleziskami i odpowiedź, dlaczego tylko w jednym pliku
-- [ ] znaleziska z charta podzielone na grupy, co najmniej jedna reguła oznaczona jako szum
-- [ ] `lab06b/kolejka.md`: trzy podatności, każda sprawdzona komendą `jq` w `lab06b/wynik.json`
-- [ ] odpowiedź na pytanie, czego skan kodu nie widzi w obrazie
+- [X] `lab06b/notatki.md`: liczby z kroku 1, plik ze znaleziskami i odpowiedź, dlaczego tylko w jednym pliku
+- [X] znaleziska z charta podzielone na grupy, co najmniej jedna reguła oznaczona jako szum
+- [X] `lab06b/kolejka.md`: trzy podatności, każda sprawdzona komendą `jq` w `lab06b/wynik.json`
+- [X] odpowiedź na pytanie, czego skan kodu nie widzi w obrazie
 
 ## Dla chętnych
 

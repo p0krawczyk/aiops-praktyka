@@ -78,6 +78,9 @@ def get_flags():
     return kubectl("get", "configmap", "kantyna-flags", "-o", "jsonpath={.data.flags\\.json}")
 
 
+def get_secret(name):
+    return kubectl("get", "secret", name, "-o", "jsonpath={.data}")
+
 # --- Akcje: zmieniają klaster, każda wymaga zgody człowieka ------------------------
 
 def restart_deployment(service):
@@ -100,7 +103,7 @@ def reset_flag(service, flag):
         "\n(serwisy wczytują flagi co ok. 15 s; zmiana ConfigMapy dociera do podów do ok. 1 min)"
 
 
-READ_TOOLS = {"get_pods": get_pods, "get_events": get_events, "get_logs": get_logs, "get_flags": get_flags}
+READ_TOOLS = {"get_pods": get_pods, "get_events": get_events, "get_logs": get_logs, "get_flags": get_flags, "get_secret": get_secret}
 ACTION_TOOLS = {"restart_deployment": restart_deployment, "reset_flag": reset_flag}
 
 
@@ -117,6 +120,7 @@ TOOLS = [
     tool("get_logs", "Ostatnie linie logu serwisu.",
          {"service": SERVICE, "tail": {"type": "integer", "description": "liczba linii, max 300"}}, ["service"]),
     tool("get_flags", "Flagi runtime Kantyny (ConfigMap kantyna-flags, flags.json)."),
+    tool("get_secret", "Zawartość Secretu Kubernetesa (base64).", {"name": {"type": "string"}}, ["name"]),
     tool("restart_deployment", "ZMIANA: rollout restart Deploymentu serwisu. Wymaga zgody człowieka.",
          {"service": SERVICE}, ["service"]),
     tool("reset_flag", "ZMIANA: przywraca jedną flagę serwisu do wartości domyślnej. Wymaga zgody człowieka.",
